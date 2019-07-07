@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		670BBB5122D2870F00F32C59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BBB5022D2870F00F32C59 /* AppDelegate.swift */; };
-		670BBB5322D2870F00F32C59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BBB5222D2870F00F32C59 /* ViewController.swift */; };
+		670BBB5322D2870F00F32C59 /* RatePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BBB5222D2870F00F32C59 /* RatePageViewController.swift */; };
 		670BBB5622D2870F00F32C59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 670BBB5422D2870F00F32C59 /* Main.storyboard */; };
 		670BBB5822D2871200F32C59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 670BBB5722D2871200F32C59 /* Assets.xcassets */; };
 		670BBB5B22D2871200F32C59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 670BBB5922D2871200F32C59 /* LaunchScreen.storyboard */; };
+		670BBB6322D2905700F32C59 /* FirstCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BBB6222D2905700F32C59 /* FirstCurrencyViewController.swift */; };
+		670BBB6522D2908B00F32C59 /* SecondCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BBB6422D2908B00F32C59 /* SecondCurrencyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		670BBB4D22D2870F00F32C59 /* Rates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		670BBB5022D2870F00F32C59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		670BBB5222D2870F00F32C59 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		670BBB5222D2870F00F32C59 /* RatePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatePageViewController.swift; sourceTree = "<group>"; };
 		670BBB5522D2870F00F32C59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		670BBB5722D2871200F32C59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		670BBB5A22D2871200F32C59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		670BBB5C22D2871200F32C59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		670BBB6222D2905700F32C59 /* FirstCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCurrencyViewController.swift; sourceTree = "<group>"; };
+		670BBB6422D2908B00F32C59 /* SecondCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCurrencyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +59,13 @@
 			isa = PBXGroup;
 			children = (
 				670BBB5022D2870F00F32C59 /* AppDelegate.swift */,
-				670BBB5222D2870F00F32C59 /* ViewController.swift */,
+				670BBB5222D2870F00F32C59 /* RatePageViewController.swift */,
 				670BBB5422D2870F00F32C59 /* Main.storyboard */,
+				670BBB6222D2905700F32C59 /* FirstCurrencyViewController.swift */,
 				670BBB5722D2871200F32C59 /* Assets.xcassets */,
 				670BBB5922D2871200F32C59 /* LaunchScreen.storyboard */,
 				670BBB5C22D2871200F32C59 /* Info.plist */,
+				670BBB6422D2908B00F32C59 /* SecondCurrencyViewController.swift */,
 			);
 			path = Rates;
 			sourceTree = "<group>";
@@ -135,8 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				670BBB5322D2870F00F32C59 /* ViewController.swift in Sources */,
+				670BBB5322D2870F00F32C59 /* RatePageViewController.swift in Sources */,
 				670BBB5122D2870F00F32C59 /* AppDelegate.swift in Sources */,
+				670BBB6322D2905700F32C59 /* FirstCurrencyViewController.swift in Sources */,
+				670BBB6522D2908B00F32C59 /* SecondCurrencyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
