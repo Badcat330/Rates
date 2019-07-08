@@ -87,13 +87,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="Rates" id="x6x-sT-PGP">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="icons8-plus-math-50" style="plain" id="nGW-ht-viM">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QIu-PK-GxQ">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QIu-PK-GxQ">
+                                <rect key="frame" x="369" y="9.5" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="icons8-plus-math-50"/>
+                                <connections>
+                                    <action selector="PlusButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="agp-Gi-fiz"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="E4X-om-avs" id="Wtq-un-NI5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,7 +108,7 @@
         <!--First Currency View Controller-->
         <scene sceneID="fYS-KJ-rEU">
             <objects>
-                <viewController id="lwJ-T1-oBY" customClass="FirstCurrencyViewController" customModule="Rates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstCurrency" id="lwJ-T1-oBY" customClass="FirstCurrencyViewController" customModule="Rates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r6X-XP-zUq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,7 +117,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="87" id="wZL-4t-37s">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PikerCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PikerCell" rowHeight="87" id="wZL-4t-37s" customClass="CurrencyTableViewCell" customModule="Rates" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wZL-4t-37s" id="C3N-J1-xkc">
@@ -130,7 +136,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1q-bi-7tT">
                                                             <rect key="frame" x="50" y="0.0" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -141,6 +147,10 @@
                                                 <constraint firstItem="Cs3-t3-BNY" firstAttribute="leading" secondItem="C3N-J1-xkc" secondAttribute="leading" constant="20" id="VUG-3E-mwf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outletCollection property="fullNameLabel" destination="e1q-bi-7tT" collectionClass="NSMutableArray" id="UO0-Bt-FQr"/>
+                                            <outletCollection property="reductionLabel" destination="Nzb-0O-pwr" collectionClass="NSMutableArray" id="CYo-Ur-lki"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -154,6 +164,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ocg-2H-l8R"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="5bP-eP-Ev5" id="nLY-JJ-sEm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srx-Sf-quk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -189,7 +202,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="94" id="Sa9-lO-wIM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PikerCell" rowHeight="94" id="Sa9-lO-wIM" customClass="CurrencyTableViewCell" customModule="Rates" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="94"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sa9-lO-wIM" id="mxh-O5-fA2">
@@ -208,7 +221,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bl0-8p-9db">
                                                             <rect key="frame" x="50" y="0.0" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -219,6 +232,10 @@
                                                 <constraint firstItem="ep3-Jb-nzf" firstAttribute="leading" secondItem="mxh-O5-fA2" secondAttribute="leading" constant="20" id="vmo-hy-Vym"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outletCollection property="reductionLabel" destination="Klu-og-DQ8" collectionClass="NSMutableArray" id="HJ7-wb-gYG"/>
+                                            <outletCollection property="fullNameLabel" destination="bl0-8p-9db" collectionClass="NSMutableArray" id="4Vq-3C-2kH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -232,6 +249,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hEs-PR-up0"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="LNo-nE-glz" id="Z3t-ua-M92"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3pt-KE-yNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

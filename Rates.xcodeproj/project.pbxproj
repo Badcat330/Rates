@@ -14,6 +14,8 @@
 		670BBB5B22D2871200F32C59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 670BBB5922D2871200F32C59 /* LaunchScreen.storyboard */; };
 		670BBB6322D2905700F32C59 /* FirstCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BBB6222D2905700F32C59 /* FirstCurrencyViewController.swift */; };
 		670BBB6522D2908B00F32C59 /* SecondCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BBB6422D2908B00F32C59 /* SecondCurrencyViewController.swift */; };
+		670BBB6B22D29FD700F32C59 /* Currency.txt in Resources */ = {isa = PBXBuildFile; fileRef = 670BBB6A22D29FD700F32C59 /* Currency.txt */; };
+		670BBB6D22D2A18600F32C59 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670BBB6C22D2A18600F32C59 /* CurrencyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		670BBB5C22D2871200F32C59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		670BBB6222D2905700F32C59 /* FirstCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCurrencyViewController.swift; sourceTree = "<group>"; };
 		670BBB6422D2908B00F32C59 /* SecondCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCurrencyViewController.swift; sourceTree = "<group>"; };
+		670BBB6A22D29FD700F32C59 /* Currency.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Currency.txt; sourceTree = "<group>"; };
+		670BBB6C22D2A18600F32C59 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +62,12 @@
 		670BBB4F22D2870F00F32C59 /* Rates */ = {
 			isa = PBXGroup;
 			children = (
+				670BBB6A22D29FD700F32C59 /* Currency.txt */,
 				670BBB5022D2870F00F32C59 /* AppDelegate.swift */,
 				670BBB5222D2870F00F32C59 /* RatePageViewController.swift */,
 				670BBB5422D2870F00F32C59 /* Main.storyboard */,
 				670BBB6222D2905700F32C59 /* FirstCurrencyViewController.swift */,
+				670BBB6C22D2A18600F32C59 /* CurrencyTableViewCell.swift */,
 				670BBB5722D2871200F32C59 /* Assets.xcassets */,
 				670BBB5922D2871200F32C59 /* LaunchScreen.storyboard */,
 				670BBB5C22D2871200F32C59 /* Info.plist */,
@@ -129,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				670BBB5B22D2871200F32C59 /* LaunchScreen.storyboard in Resources */,
+				670BBB6B22D29FD700F32C59 /* Currency.txt in Resources */,
 				670BBB5822D2871200F32C59 /* Assets.xcassets in Resources */,
 				670BBB5622D2870F00F32C59 /* Main.storyboard in Resources */,
 			);
@@ -144,6 +151,7 @@
 				670BBB5322D2870F00F32C59 /* RatePageViewController.swift in Sources */,
 				670BBB5122D2870F00F32C59 /* AppDelegate.swift in Sources */,
 				670BBB6322D2905700F32C59 /* FirstCurrencyViewController.swift in Sources */,
+				670BBB6D22D2A18600F32C59 /* CurrencyTableViewCell.swift in Sources */,
 				670BBB6522D2908B00F32C59 /* SecondCurrencyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

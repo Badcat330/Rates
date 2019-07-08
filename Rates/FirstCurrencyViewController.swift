@@ -10,10 +10,13 @@ import UIKit
 
 class FirstCurrencyViewController: UIViewController {
 
+  @IBOutlet weak var tableView: UITableView!
+  
+  let lines = try! String(contentsOfFile: Bundle.main.path(forResource: "Currency", ofType: "txt")!).split{$0.isNewline}
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tableView.dataSource=self
     }
     
 
@@ -27,4 +30,26 @@ class FirstCurrencyViewController: UIViewController {
     }
     */
 
+}
+
+extension FirstCurrencyViewController : UITableViewDataSource{
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return lines.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "PikerCell", for: indexPath) as! CurrencyTableViewCell
+    let cellDataStrings = lines[indexPath.row].split(separator: " ")
+    for label in cell.reductionLabel{
+      label.text = String(cellDataStrings[0])
+    }
+    for label in cell.fullNameLabel{
+      label.text = String(cellDataStrings[2])
+    }
+    return cell
+  }
+}
+
+extension FirstCurrencyViewController : UITableViewDelegate{
+  
 }

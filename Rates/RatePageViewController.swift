@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import Foundation
 
 class RatePageViewController: UIViewController {
 
+  @IBOutlet weak var tableView: UITableView!
+  var pairesOfCurrency: [String:String] = [:]
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
   }
-
-
+  
+  @IBAction func PlusButtonPress(_ sender: Any) {
+    let ViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstCurrency") as! FirstCurrencyViewController
+    ViewController.loadViewIfNeeded()
+    show(ViewController, sender: nil)
+  }
 }
 
