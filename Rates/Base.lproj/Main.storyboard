@@ -31,16 +31,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Ae-tD-Vwr">
-                                                    <rect key="frame" x="20" y="24" width="44.5" height="55.5"/>
+                                                    <rect key="frame" x="20" y="18" width="44.5" height="61.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWy-Ol-1LJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="44.5" height="27"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="44.5" height="33"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ez7-p6-cmH">
-                                                            <rect key="frame" x="0.0" y="35" width="44.5" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="41" width="44.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="2Ae-tD-Vwr" secondAttribute="bottom" constant="17" id="HMR-tD-frZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="vpy-49-aEr" secondAttribute="trailing" constant="20" id="KUs-Fv-8St"/>
                                                 <constraint firstItem="2Ae-tD-Vwr" firstAttribute="leading" secondItem="X8f-ad-FT7" secondAttribute="leading" constant="20" id="Q0d-08-pS0"/>
-                                                <constraint firstItem="2Ae-tD-Vwr" firstAttribute="top" secondItem="X8f-ad-FT7" secondAttribute="top" constant="24" id="W16-JF-O4l"/>
+                                                <constraint firstItem="2Ae-tD-Vwr" firstAttribute="top" secondItem="X8f-ad-FT7" secondAttribute="top" constant="18" id="W16-JF-O4l"/>
                                                 <constraint firstAttribute="bottom" secondItem="vpy-49-aEr" secondAttribute="bottom" constant="17" id="sdh-1F-1C8"/>
                                                 <constraint firstItem="vpy-49-aEr" firstAttribute="top" secondItem="X8f-ad-FT7" secondAttribute="top" constant="18" id="wT5-e9-3Cc"/>
                                             </constraints>

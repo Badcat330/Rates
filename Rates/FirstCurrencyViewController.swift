@@ -40,6 +40,7 @@ extension FirstCurrencyViewController : UITableViewDataSource{
 }
 
 extension FirstCurrencyViewController : UITableViewDelegate{
+  //delgate for pressing row
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
     let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondCurrency") as! SecondCurrencyViewController
     viewController.loadViewIfNeeded()

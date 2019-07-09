@@ -52,7 +52,14 @@ extension RatePageViewController: UITableViewDataSource{
     rateCell.SecondRateFullName.text = pairesOfCurrency[indexPath.row].secondRateFullName + "・" + pairesOfCurrency[indexPath.row].secondRateredustion
     return rateCell
   }
-  
-  
 }
 
+extension RatePageViewController: UITableViewDelegate{
+  //delegate for deleting
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      pairesOfCurrency.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+  }
+}

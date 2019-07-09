@@ -40,6 +40,7 @@ extension SecondCurrencyViewController : UITableViewDataSource{
 }
 
 extension SecondCurrencyViewController: UITableViewDelegate{
+  //delgate for pressing row
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
     let rateViewController = navigationController?.viewControllers[0] as! RatePageViewController
     let selectedCell = tableView.cellForRow(at: indexPath) as! CurrencyTableViewCell
