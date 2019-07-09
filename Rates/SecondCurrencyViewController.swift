@@ -11,24 +11,14 @@ import UIKit
 class SecondCurrencyViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
-   let lines = try! String(contentsOfFile: Bundle.main.path(forResource: "Currency", ofType: "txt")!).split{$0.isNewline}
+  let lines = try! String(contentsOfFile: Bundle.main.path(forResource: "Currency", ofType: "txt")!).split{$0.isNewline}
+  var previousSelection: String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    tableView.dataSource=self
+    tableView.dataSource = self
+    tableView.delegate = self
   }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension SecondCurrencyViewController : UITableViewDataSource{
@@ -46,5 +36,15 @@ extension SecondCurrencyViewController : UITableViewDataSource{
       label.text = String(cellDataStrings[2])
     }
     return cell
+  }
+}
+
+extension SecondCurrencyViewController: UITableViewDelegate{
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+    let rateViewController = navigationController?.viewControllers[0] as! RatePageViewController
+    let selectedCell = tableView.cellForRow(at: indexPath) as! CurrencyTableViewCell
+    rateViewController.loadViewIfNeeded()
+    rateViewController.pairesOfCurrency[previousSelection!] = selectedCell.reductionLabel[0].text
+    navigationController?.popToViewController(rateViewController, animated: true)
   }
 }

@@ -16,20 +16,9 @@ class FirstCurrencyViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource=self
+        tableView.dataSource = self
+      tableView.delegate = self
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension FirstCurrencyViewController : UITableViewDataSource{
@@ -51,5 +40,11 @@ extension FirstCurrencyViewController : UITableViewDataSource{
 }
 
 extension FirstCurrencyViewController : UITableViewDelegate{
-  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+    let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondCurrency") as! SecondCurrencyViewController
+    viewController.loadViewIfNeeded()
+    let selectedCell = tableView.cellForRow(at: indexPath) as! CurrencyTableViewCell
+    viewController.previousSelection = selectedCell.reductionLabel[0].text
+    show(viewController, sender: nil)
+  }
 }
