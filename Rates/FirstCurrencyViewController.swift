@@ -44,7 +44,8 @@ extension FirstCurrencyViewController : UITableViewDelegate{
     let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondCurrency") as! SecondCurrencyViewController
     viewController.loadViewIfNeeded()
     let selectedCell = tableView.cellForRow(at: indexPath) as! CurrencyTableViewCell
-    viewController.previousSelection = selectedCell.reductionLabel[0].text
+    viewController.previousSelection.append(selectedCell.reductionLabel[0].text!)
+    viewController.previousSelection.append(selectedCell.fullNameLabel[0].text!)
     show(viewController, sender: nil)
   }
 }

@@ -12,7 +12,7 @@ class SecondCurrencyViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
   let lines = try! String(contentsOfFile: Bundle.main.path(forResource: "Currency", ofType: "txt")!).split{$0.isNewline}
-  var previousSelection: String?
+  var previousSelection: [String] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -44,7 +44,14 @@ extension SecondCurrencyViewController: UITableViewDelegate{
     let rateViewController = navigationController?.viewControllers[0] as! RatePageViewController
     let selectedCell = tableView.cellForRow(at: indexPath) as! CurrencyTableViewCell
     rateViewController.loadViewIfNeeded()
-    rateViewController.pairesOfCurrency[previousSelection!] = selectedCell.reductionLabel[0].text
+    
+    let pairOfRates = (previousSelection[0],
+                       previousSelection[1],
+                       selectedCell.reductionLabel[0].text,
+                       selectedCell.fullNameLabel[0].text)
+    
+    rateViewController.pairesOfCurrency.append(pairOfRates as! (firstRateRedustion: String, firstRateFullName: String, secondRateredustion: String, secondRateFullName: String))
+    rateViewController.tableView.reloadData()
     navigationController?.popToViewController(rateViewController, animated: true)
   }
 }

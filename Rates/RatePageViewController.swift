@@ -12,10 +12,24 @@ import Foundation
 class RatePageViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
-  var pairesOfCurrency: [String:String] = [:]
+  
+  var pairesOfCurrency: [(
+    firstRateRedustion: String,
+    firstRateFullName: String,
+    secondRateredustion: String,
+    secondRateFullName: String
+    )] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    tableView.dataSource = self
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    for pair in pairesOfCurrency{
+      print(pair)
+    }
   }
   
   @IBAction func PlusButtonPress(_ sender: Any) {
@@ -23,5 +37,22 @@ class RatePageViewController: UIViewController {
     ViewController.loadViewIfNeeded()
     show(ViewController, sender: nil)
   }
+}
+
+extension RatePageViewController: UITableViewDataSource{
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return pairesOfCurrency.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let rateCell = tableView.dequeueReusableCell(withIdentifier: "RateCell") as! RateTableViewCell
+    rateCell.firstRateTitel.text = "1 " + pairesOfCurrency[indexPath.row].firstRateRedustion
+    rateCell.firstRateFullName.text = pairesOfCurrency[indexPath.row].firstRateFullName
+    rateCell.SecondRateTitel.text = "1 "
+    rateCell.SecondRateFullName.text = pairesOfCurrency[indexPath.row].secondRateFullName + "・" + pairesOfCurrency[indexPath.row].secondRateredustion
+    return rateCell
+  }
+  
+  
 }
 
