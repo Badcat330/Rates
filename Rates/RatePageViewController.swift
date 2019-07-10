@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 class RatePageViewController: UIViewController {
 
@@ -18,7 +16,8 @@ class RatePageViewController: UIViewController {
     firstRateRedustion: String,
     firstRateFullName: String,
     secondRateredustion: String,
-    secondRateFullName: String
+    secondRateFullName: String,
+    rate: Double
     )] = []
   
   override func viewDidLoad() {
@@ -26,12 +25,26 @@ class RatePageViewController: UIViewController {
     tableView.dataSource = self
   }
   
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    for pair in pairesOfCurrency{
-      print(pair)
-    }
-  }
+//  func loadRate(){
+//    for pair in pairesOfCurrency{
+//    let url = "https://api.exchangeratesapi.io/latest?base="
+//      + pair.firstRateRedustion+"&symbols="
+//      + pair.firstRateRedustion+"," + pair.secondRateredustion
+//    Alamofire.request(url).responseJSON{
+//    response in
+//    switch response.result {
+//    case .failure(let error):
+//      assertionFailure(error.localizedDescription)
+//    case .success(let data):
+//      let json = JSON(data)
+//      let newRate = json["rates"].dictionary![pair.secondRateredustion]!.doubleValue
+//      print(newRate)
+//      self.newRates.append(newRate)
+//      }
+//    }
+//    }
+//    self.rates = self.newRates
+//  }
   
   @IBAction func PlusButtonPress(_ sender: Any) {
     let ViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstCurrency") as! FirstCurrencyViewController
@@ -49,8 +62,8 @@ extension RatePageViewController: UITableViewDataSource{
     let rateCell = tableView.dequeueReusableCell(withIdentifier: "RateCell") as! RateTableViewCell
     rateCell.firstRateTitel.text = "1 " + pairesOfCurrency[indexPath.row].firstRateRedustion
     rateCell.firstRateFullName.text = pairesOfCurrency[indexPath.row].firstRateFullName
-    rateCell.SecondRateTitel.text = "1 "
     rateCell.SecondRateFullName.text = pairesOfCurrency[indexPath.row].secondRateFullName + "・" + pairesOfCurrency[indexPath.row].secondRateredustion
+    rateCell.SecondRateTitel.text = String(format: "%.3f", pairesOfCurrency[indexPath.row].rate)
     return rateCell
   }
 }
