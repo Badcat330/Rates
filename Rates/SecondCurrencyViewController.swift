@@ -49,7 +49,6 @@ class SecondCurrencyViewController: UIViewController {
       let url = "https://api.exchangeratesapi.io/latest?base="
         + firstCurrency+"&symbols="
         + firstCurrency+"," + secondCurrency
-      
       Alamofire.request(url).responseJSON{
         response in
         switch response.result {
@@ -58,8 +57,9 @@ class SecondCurrencyViewController: UIViewController {
           assertionFailure(error.localizedDescription)
         case .success(let data):
           let json = JSON(data)
-          let newRate = json["rates"].dictionary![secondCurrency]!.doubleValue
-          self.rate = newRate
+          if let newRate = json["rates"].dictionary?[secondCurrency]?.doubleValue{
+            self.rate = newRate
+          }
         }
       }
     }

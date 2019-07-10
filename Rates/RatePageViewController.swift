@@ -12,15 +12,9 @@ import SwiftyJSON
 
 class RatePageViewController: UIViewController {
 
-  @IBOutlet weak var tableView: UITableView!{
-    didSet{
-      let swipe = UISwipeGestureRecognizer(target: self, action: nil)
-      swipe.direction = .up
-      swipe.delegate = self
-      tableView.addGestureRecognizer(swipe)
-    }
-  }
-  
+  @IBOutlet weak var tableView: UITableView!
+
+  let refreshControl = UIRefreshControl()
   
   var pairesOfCurrency: [(
     firstRateRedustion: String,
@@ -30,30 +24,36 @@ class RatePageViewController: UIViewController {
     rate: Double
     )] = []
   
-  var rateForBuf: Double?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
+    tableView.delegate = self
+    refreshControl.addTarget(self, action: #selector(Updating), for: .valueChanged)
+    tableView.refreshControl = refreshControl
   }
   
-  func GetRate(firstCurrency: String, secondCurrency: String){
-    let url = "https://api.exchangeratesapi.io/latest?base="
-      + firstCurrency+"&symbols="
-      + firstCurrency+"," + secondCurrency
-    
-    Alamofire.request(url).responseJSON{
-      response in
-      switch response.result {
-      case .failure(let error):
-        // TODO: fix error
-        assertionFailure(error.localizedDescription)
-      case .success(let data):
-        let json = JSON(data)
-        let newRate = json["rates"].dictionary![secondCurrency]!.doubleValue
-        self.rateForBuf = newRate
+  @objc func Updating(){
+    for number in 0 ..< pairesOfCurrency.count{
+      let url = "https://api.exchangeratesapi.io/latest?base="
+        + pairesOfCurrency[number].firstRateRedustion+"&symbols="
+        + pairesOfCurrency[number].firstRateRedustion+"," + pairesOfCurrency[number].secondRateredustion
+      print(url)
+      Alamofire.request(url).responseJSON{
+        response in
+        switch response.result {
+        case .failure(let error):
+          // TODO: fix error
+          assertionFailure(error.localizedDescription)
+        case .success(let data):
+          let json = JSON(data)
+          let newRate = json["rates"].dictionary![self.pairesOfCurrency[number].secondRateredustion]!.doubleValue
+          self.pairesOfCurrency[number].rate = newRate
+        }
       }
     }
+    tableView.reloadData()
+    self.refreshControl.endRefreshing()
   }
   
   @IBAction func PlusButtonPress(_ sender: Any) {
@@ -88,18 +88,4 @@ extension RatePageViewController: UITableViewDelegate{
   }
 }
 
-extension RatePageViewController: UIGestureRecognizerDelegate{
-  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                         shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-    print("Updating start")
-    for number in 0 ..< pairesOfCurrency.count{
-      GetRate(firstCurrency: pairesOfCurrency[number].firstRateRedustion, secondCurrency: pairesOfCurrency[number].secondRateredustion)
-      if let newRate = rateForBuf{
-        pairesOfCurrency[number].rate = newRate
-      }
-    }
-    tableView.reloadData()
-    print("Updating finish")
-    return true
-  }
-}
+
