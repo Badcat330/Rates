@@ -42,9 +42,12 @@ class RatePageViewController: UIViewController {
       Alamofire.request(url).responseJSON{
         response in
         switch response.result {
-        case .failure(let error):
-          // TODO: fix error
-          assertionFailure(error.localizedDescription)
+        case .failure:
+          let alert = UIAlertController(title: "No internet connection!",
+                                        message: "Your device has problems with internet connection. Plese connect the internet!",
+                                        preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+          self.present(alert, animated: true)
         case .success(let data):
           let json = JSON(data)
           let newRate = json["rates"].dictionary![self.pairesOfCurrency[number].secondRateredustion]!.doubleValue

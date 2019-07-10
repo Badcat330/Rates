@@ -27,7 +27,8 @@ class SecondCurrencyViewController: UIViewController {
                            nowSelection[1],
                            rate)
         rateViewController.loadViewIfNeeded()
-        rateViewController.pairesOfCurrency.append(pairOfRates as! (firstRateRedustion: String, firstRateFullName: String, secondRateredustion:    String, secondRateFullName: String, rate: Double ))
+        rateViewController.pairesOfCurrency.append(pairOfRates as!
+          (firstRateRedustion: String, firstRateFullName: String, secondRateredustion:    String, secondRateFullName: String, rate: Double ))
         rateViewController.tableView.reloadData()
         self.removeSpinner()
         navigationController?.popToViewController(rateViewController, animated: true)
@@ -52,9 +53,18 @@ class SecondCurrencyViewController: UIViewController {
       Alamofire.request(url).responseJSON{
         response in
         switch response.result {
-        case .failure(let error):
-          // TODO: fix error
-          assertionFailure(error.localizedDescription)
+        case .failure:
+          let alert = UIAlertController(title: "No internet connection!",
+                                        message: "Your device has problems with internet connection. Plese connect the internet!",
+                                        preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "OK", style: .cancel){ action in
+              if let rateViewController = (self.navigationController?.viewControllers[0] as? RatePageViewController){
+              rateViewController.loadViewIfNeeded()
+              self.removeSpinner()
+              self.navigationController?.popToViewController(rateViewController, animated: true)
+            }
+          })
+          self.present(alert,animated: true)
         case .success(let data):
           let json = JSON(data)
           if let newRate = json["rates"].dictionary?[secondCurrency]?.doubleValue{
@@ -64,6 +74,13 @@ class SecondCurrencyViewController: UIViewController {
       }
     }
   
+  @objc func goBack(_:UIAlertAction) -> Void{
+    if let rateViewController = (self.navigationController?.viewControllers[0] as? RatePageViewController){
+      rateViewController.loadViewIfNeeded()
+      self.removeSpinner()
+      self.navigationController?.popToViewController(rateViewController, animated: true)
+    }
+  }
 }
 
 extension SecondCurrencyViewController : UITableViewDataSource{
