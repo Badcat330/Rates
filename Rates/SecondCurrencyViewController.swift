@@ -49,6 +49,7 @@ class SecondCurrencyViewController: UIViewController {
         response in
         switch response.result {
         case .failure(let error):
+          // TODO: fix error
           assertionFailure(error.localizedDescription)
         case .success(let data):
           let json = JSON(data)
