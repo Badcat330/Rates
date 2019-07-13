@@ -29,7 +29,6 @@ class SecondCurrencyViewController: UIViewController {
         rateViewController.loadViewIfNeeded()
         rateViewController.pairesOfCurrency.append(pairOfRates as!
           (firstRateRedustion: String, firstRateFullName: String, secondRateredustion:    String, secondRateFullName: String, rate: Double ))
-        rateViewController.tableView.reloadData()
         self.removeSpinner()
         navigationController?.popToViewController(rateViewController, animated: true)
       }
