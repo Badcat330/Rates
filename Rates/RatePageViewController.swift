@@ -87,7 +87,6 @@ extension RatePageViewController: UITableViewDelegate{
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       pairesOfCurrency.remove(at: indexPath.row)
-      tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }
 }
