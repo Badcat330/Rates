@@ -21,15 +21,13 @@ class SecondCurrencyViewController: UIViewController {
     didSet{
       
       if let rateViewController = (navigationController?.viewControllers[0] as? RatePageViewController){
-        let pairOfRates = (previousSelection[0],
-                           previousSelection[1],
-                           nowSelection[0],
-                           nowSelection[1],
-                           rate)
+        let pairOfRates = PaireOfRates(firstRateRedustion: previousSelection[0],
+                                       firstRateFullName: previousSelection[1],
+                                       secondRateRedustion: nowSelection[0],
+                                       secondRateFullName: nowSelection[1],
+                                       rate: rate!)
         rateViewController.loadViewIfNeeded()
-        rateViewController.pairesOfCurrency.append(pairOfRates as!
-          (firstRateRedustion: String, firstRateFullName: String, secondRateredustion:    String, secondRateFullName: String, rate: Double ))
-        rateViewController.tableView.reloadData()
+        rateViewController.pairesOfCurrency.append(pairOfRates)
         self.removeSpinner()
         navigationController?.popToViewController(rateViewController, animated: true)
       }

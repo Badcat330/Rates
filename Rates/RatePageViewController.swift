@@ -16,17 +16,19 @@ class RatePageViewController: UIViewController {
 
   let refreshControl = UIRefreshControl()
   
-  var pairesOfCurrency: [(
-    firstRateRedustion: String,
-    firstRateFullName: String,
-    secondRateredustion: String,
-    secondRateFullName: String,
-    rate: Double
-    )] = []
-  
+  var pairesOfCurrency: [PaireOfRates] = []{
+    didSet{
+      let dataFromRates = try! PropertyListEncoder().encode(pairesOfCurrency)
+      UserDefaults.standard.set(dataFromRates, forKey: "pairesOfCurrency")
+      tableView.reloadData()
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    if let dataFromUserDefaults = UserDefaults.standard.data(forKey: "pairesOfCurrency"){
+      pairesOfCurrency = try! PropertyListDecoder().decode([PaireOfRates].self, from: dataFromUserDefaults)
+    }
     tableView.dataSource = self
     tableView.delegate = self
     refreshControl.addTarget(self, action: #selector(Updating), for: .valueChanged)
@@ -37,7 +39,7 @@ class RatePageViewController: UIViewController {
     for number in 0 ..< pairesOfCurrency.count{
       let url = "https://api.exchangeratesapi.io/latest?base="
         + pairesOfCurrency[number].firstRateRedustion+"&symbols="
-        + pairesOfCurrency[number].firstRateRedustion+"," + pairesOfCurrency[number].secondRateredustion
+        + pairesOfCurrency[number].firstRateRedustion+"," + pairesOfCurrency[number].secondRateRedustion
       print(url)
       Alamofire.request(url).responseJSON{
         response in
@@ -50,12 +52,11 @@ class RatePageViewController: UIViewController {
           self.present(alert, animated: true)
         case .success(let data):
           let json = JSON(data)
-          let newRate = json["rates"].dictionary![self.pairesOfCurrency[number].secondRateredustion]!.doubleValue
+          let newRate = json["rates"].dictionary![self.pairesOfCurrency[number].secondRateRedustion]!.doubleValue
           self.pairesOfCurrency[number].rate = newRate
         }
       }
     }
-    tableView.reloadData()
     self.refreshControl.endRefreshing()
   }
   
@@ -75,7 +76,7 @@ extension RatePageViewController: UITableViewDataSource{
     let rateCell = tableView.dequeueReusableCell(withIdentifier: "RateCell") as! RateTableViewCell
     rateCell.firstRateTitel.text = "1 " + pairesOfCurrency[indexPath.row].firstRateRedustion
     rateCell.firstRateFullName.text = pairesOfCurrency[indexPath.row].firstRateFullName
-    rateCell.SecondRateFullName.text = pairesOfCurrency[indexPath.row].secondRateFullName + "・" + pairesOfCurrency[indexPath.row].secondRateredustion
+    rateCell.SecondRateFullName.text = pairesOfCurrency[indexPath.row].secondRateFullName + "・" + pairesOfCurrency[indexPath.row].secondRateRedustion
     rateCell.SecondRateTitel.text = String(format: "%.3f", pairesOfCurrency[indexPath.row].rate)
     return rateCell
   }
