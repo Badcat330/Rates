@@ -14,11 +14,11 @@ class FirstCurrencyViewController: UIViewController {
   
   let lines = try! String(contentsOfFile: Bundle.main.path(forResource: "Currency", ofType: "txt")!).split{$0.isNewline}
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.dataSource = self
-      tableView.delegate = self
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    tableView.dataSource = self
+    tableView.delegate = self
+  }
 }
 
 extension FirstCurrencyViewController : UITableViewDataSource{
@@ -42,7 +42,8 @@ extension FirstCurrencyViewController : UITableViewDataSource{
 extension FirstCurrencyViewController : UITableViewDelegate{
   //delgate for pressing row
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-    let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondCurrency") as! SecondCurrencyViewController
+    let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondCurrency")
+      as! SecondCurrencyViewController
     viewController.loadViewIfNeeded()
     let selectedCell = tableView.cellForRow(at: indexPath) as! CurrencyTableViewCell
     viewController.previousSelection.append(selectedCell.reductionLabel[0].text!)

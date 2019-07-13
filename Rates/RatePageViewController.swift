@@ -36,11 +36,9 @@ class RatePageViewController: UIViewController {
   }
   
   @objc func Updating(){
+    // func for updating paires of currencies if user asks
     for number in 0 ..< pairesOfCurrency.count{
-      let url = "https://api.exchangeratesapi.io/latest?base="
-        + pairesOfCurrency[number].firstRateRedustion+"&symbols="
-        + pairesOfCurrency[number].firstRateRedustion+"," + pairesOfCurrency[number].secondRateRedustion
-      print(url)
+      let url = "https://api.exchangeratesapi.io/latest?base=\(pairesOfCurrency[number].firstRateRedustion)&symbols=\(pairesOfCurrency[number].firstRateRedustion),\(pairesOfCurrency[number].secondRateRedustion)"
       Alamofire.request(url).responseJSON{
         response in
         switch response.result {
@@ -61,7 +59,8 @@ class RatePageViewController: UIViewController {
   }
   
   @IBAction func PlusButtonPress(_ sender: Any) {
-    let ViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstCurrency") as! FirstCurrencyViewController
+    let ViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstCurrency")
+      as! FirstCurrencyViewController
     ViewController.loadViewIfNeeded()
     show(ViewController, sender: nil)
   }

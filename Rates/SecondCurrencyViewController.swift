@@ -19,7 +19,6 @@ class SecondCurrencyViewController: UIViewController {
   let lines = try! String(contentsOfFile: Bundle.main.path(forResource: "Currency", ofType: "txt")!).split{$0.isNewline}
   var rate: Double?{
     didSet{
-      
       if let rateViewController = (navigationController?.viewControllers[0] as? RatePageViewController){
         let pairOfRates = PaireOfRates(firstRateRedustion: previousSelection[0],
                                        firstRateFullName: previousSelection[1],
@@ -44,10 +43,9 @@ class SecondCurrencyViewController: UIViewController {
   }
   
   func GetRate(firstCurrency: String, secondCurrency: String){
+    //func for geting rate
       showSpinner(onView: self.view)
-      let url = "https://api.exchangeratesapi.io/latest?base="
-        + firstCurrency+"&symbols="
-        + firstCurrency+"," + secondCurrency
+      let url = "https://api.exchangeratesapi.io/latest?base=\(firstCurrency)+&symbols=\(firstCurrency),\(secondCurrency)"
       Alamofire.request(url).responseJSON{
         response in
         switch response.result {
@@ -73,6 +71,7 @@ class SecondCurrencyViewController: UIViewController {
     }
   
   @objc func goBack(_:UIAlertAction) -> Void{
+    //func for geting back if something wrong hapened
     if let rateViewController = (self.navigationController?.viewControllers[0] as? RatePageViewController){
       rateViewController.loadViewIfNeeded()
       self.removeSpinner()
