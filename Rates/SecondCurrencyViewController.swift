@@ -45,7 +45,7 @@ class SecondCurrencyViewController: UIViewController {
   func GetRate(firstCurrency: String, secondCurrency: String){
     //func for geting rate
       showSpinner(onView: self.view)
-      let url = "https://api.exchangeratesapi.io/latest?base=\(firstCurrency)+&symbols=\(firstCurrency),\(secondCurrency)"
+      let url = "https://api.exchangeratesapi.io/latest?base=\(firstCurrency)&symbols=\(firstCurrency),\(secondCurrency)"
       Alamofire.request(url).responseJSON{
         response in
         switch response.result {
